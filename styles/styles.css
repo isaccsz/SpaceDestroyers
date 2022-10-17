@@ -11,7 +11,7 @@ html{
 }
 
 body{
-    background-image: url(../Img/background.png);
+    background-image: url(../img/background.png);
     width: 100%;
     height: 100%;
     display: flex;
@@ -20,7 +20,7 @@ body{
 }
 
 .background{
-    background-image: url(../Img/boardbg.jpg);
+    background-image: url(../img/boardbg.jpg);
     background-repeat: repeat;
     height: 10000px;
     width: 100%;
@@ -61,7 +61,7 @@ body{
 .asteroides{
     position: absolute;
     top: -76;
-    background-image: url(../Img/asteroid.png);
+    background-image: url(../img/asteroid.png);
     animation: asteroidAnimation 2s infinite linear;
 }
 
