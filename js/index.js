@@ -27,7 +27,7 @@ function generateAsteroids(){
     const createElement = document.createElement('img');
     let size = 80;
     createElement.style.width = size + 'px';
-    createElement.src = './img/asteroid.png';
+    createElement.src = './Img/asteroid.png';
     createElement.className = 'asteroides';
     createElement.style.top = -76 + 'px';
     createElement.style.left = Math.random() * innerWidth + 'px'
