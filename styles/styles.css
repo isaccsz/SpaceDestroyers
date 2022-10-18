@@ -38,7 +38,7 @@ body{
 #playerIcon{
     width: 40px;
     position: absolute;
-    bottom: 0;
+    bottom: 25px;
     left: 45%;
 }
 
@@ -46,7 +46,7 @@ body{
     width: 100px;
     position: absolute;
     top: -76px;
-    left: 45%;
+    left: 50%;
     animation: asteroidAnimation 3s infinite linear;
 }
 
@@ -63,6 +63,24 @@ body{
     top: -76;
     background-image: url(../Img/asteroid.png);
     animation: asteroidAnimation 2s infinite linear;
+}
+
+#instruction{
+    position: absolute;
+    font-size: 25px;
+    font-weight: bold;
+    bottom: 0;
+    right: 50%;
+    animation: instructionAnimation 3s infinite linear;
+}
+
+#playerName{
+    position: absolute;
+    line-height: 50px;
+    font-size: 15px;
+    top: 15px;
+    right: 15px;
+    color: rgba(255, 255, 255, .3);
 }
 
 @keyframes asteroidAnimation {
@@ -91,5 +109,23 @@ body{
     }
     100% {
       transform: translate3d(0, 0, 0);
+    }
+}
+
+@keyframes instructionAnimation {
+    0%{
+        color: #999;
+    }
+    25%{
+       color: #111;
+    }
+    50%{
+        color: #999;
+    }
+    75%{
+        color: #111;
+    }
+    100%{
+        color: #999;
     }
 }
