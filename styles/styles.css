@@ -29,7 +29,7 @@ body{
 
 .gameboard{
     margin: 0 auto;
-    width: 80%;
+    width: 1000px;
     height: 80%;
     border: 1px solid black;
     position: relative;

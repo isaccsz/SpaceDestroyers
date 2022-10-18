@@ -7,11 +7,10 @@ document.addEventListener('keydown', function(event) {
     switch (event.key) {
     
       case "ArrowLeft":
-          console.log("Left arrow!")
+          playerMoving('left');
           break;
       case "ArrowRight":
-          console.log("Right arrow!")
-          moveRight();
+          playerMoving('right');
           break;
      }
 });
@@ -19,7 +18,6 @@ document.addEventListener('keydown', function(event) {
 function asteroidTracking(){
     const missilePositionLeft = missile.offsetLeft;
     const missilePositionBottom = window.getComputedStyle(missile).bottom;
-    const playerPosition = spaceship.offsetLeft;
 }
 
 function generateAsteroids(){
@@ -33,9 +31,23 @@ function generateAsteroids(){
     createElement.style.left = Math.random() * innerWidth + 'px'
     section.appendChild(createElement);
 
+
+
     setTimeout(() => {
         createElement.remove()
     },4000)
+}
+
+function playerMoving(direction){
+    if(direction==='right'){
+        spaceship.style.left = (spaceship.offsetLeft + 20 ) + 'px';
+        missile.style.left = (spaceship.offsetLeft + 1 ) + 'px';
+        console.log(spaceship.style.left);
+    }else if(direction==='left'){
+        spaceship.style.left = (spaceship.offsetLeft - 20 ) + 'px';
+        missile.style.left = (spaceship.offsetLeft - 1 ) + 'px';
+        console.log(spaceship.style.left);
+    }
 }
 
 const generateAsteroidsIcons = setInterval(generateAsteroids, 1000);
