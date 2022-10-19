@@ -50,7 +50,7 @@ body{
     animation: asteroidAnimation 3s infinite linear;
 }
 
-#missile{
+.missile{
     width: 40px;
     position: absolute;
     bottom: 50px;

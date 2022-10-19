@@ -1,9 +1,9 @@
 const spaceship = document.querySelector('#playerIcon');
-const missile = document.querySelector('#missile');
+let playerPosition;
 
 document.addEventListener('keydown', function(event) {
     const key = event.key; 
-    
+
     switch (event.key) {
     
       case "ArrowLeft":
@@ -34,15 +34,34 @@ function generateAsteroids(){
     },4000)
 }
 
+function playerShooting(){
+    const container = document.querySelector('.gameboard');
+    const createShoot = document.createElement('img');
+
+    createShoot.style.width = 35 + 'px';
+    createShoot.src = './Img/missile.png';
+    createShoot.className = 'missile';
+    createShoot.style.bottom = 100 + 'px';
+    createShoot.style.left = playerPosition + 'px';
+    container.appendChild(createShoot);
+    setTimeout(() => {
+        createShoot.remove()
+    },500)
+}
+
 function playerMoving(direction){
+    playerPosition = 0;
+
     if(direction==='right'){
         spaceship.style.left = (spaceship.offsetLeft + 20 ) + 'px';
-        missile.style.left = (spaceship.offsetLeft + 1 ) + 'px';
+        playerPosition = spaceship.offsetLeft;
     }else if(direction==='left'){
         spaceship.style.left = (spaceship.offsetLeft - 20 ) + 'px';
-        missile.style.left = (spaceship.offsetLeft - 1 ) + 'px';
+        playerPosition = spaceship.offsetLeft;
     }
 }
+
+const generateShoot = setInterval(playerShooting, 500);
 
 const generateAsteroidsIcons = setInterval(generateAsteroids, 1000);
 
