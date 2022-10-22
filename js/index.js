@@ -39,18 +39,22 @@ function generateAsteroids(){
 }
 
 function playerShooting(){
-    const container = document.querySelector('.gameboard');
-    const createShoot = document.createElement('img');
 
-    createShoot.style.width = 35 + 'px';
-    createShoot.src = './Img/missile.png';
-    createShoot.className = 'missile';
-    createShoot.style.bottom = 100 + 'px';
-    createShoot.style.left = playerPosition + 'px';
-    container.appendChild(createShoot);
-    setTimeout(() => {
-        createShoot.remove()
-    },500)
+    if(playerPosition!=undefined){
+    
+        const container = document.querySelector('.gameboard');
+        const createShoot = document.createElement('img');
+
+        createShoot.style.width = 35 + 'px';
+        createShoot.src = './Img/missile.png';
+        createShoot.className = 'missile';
+        createShoot.style.bottom = 100 + 'px';
+        createShoot.style.left = playerPosition + 'px';
+        container.appendChild(createShoot);
+        setTimeout(() => {
+            createShoot.remove()
+        },500)
+    }
 }
 
 function playerMoving(direction){
@@ -84,7 +88,7 @@ function removeAsteroid(){
 
 function looseCheck(){
     if(playerPosition!=undefined && asteroid!=undefined){
-        if(playerPosition===asteroid.offsetLeft || (playerPosition>asteroid.offsetLeft && playerPosition < (asteroid.offsetLeft+79))){
+        if(playerPosition===asteroid.offsetLeft || (playerPosition>(asteroid.offsetLeft - 30) && playerPosition < (asteroid.offsetLeft+79))){
             if(asteroidTopPosition<500 && asteroidTopPosition > 400){
                 alert("looser");
                 removeAsteroid();
