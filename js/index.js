@@ -1,5 +1,8 @@
 const spaceship = document.querySelector('#playerIcon');
 let playerPosition;
+let asteroid;
+let asteroidTopPosition;
+let shoot;
 
 document.addEventListener('keydown', function(event) {
     const key = event.key; 
@@ -15,23 +18,24 @@ document.addEventListener('keydown', function(event) {
      }
 });
 
-function asteroidTracking(){
-   
+function asteroidPosition(){
+
 }
 
 function generateAsteroids(){
-    const section = document.querySelector('.gameboard');
-    const createElement = document.createElement('img');
-    let size = 80;
-    createElement.style.width = size + 'px';
-    createElement.src = './Img/asteroid.png';
-    createElement.className = 'asteroides';
-    createElement.style.top = -76 + 'px';
-    createElement.style.left = Math.random() * innerWidth + 'px'
-    section.appendChild(createElement);
-    setTimeout(() => {
-        createElement.remove()
-    },4000)
+    if(asteroid===undefined){
+        const section = document.querySelector('.gameboard');
+        const createElement = document.createElement('img');
+        let size = 80;
+        createElement.style.width = size + 'px';
+        createElement.src = './Img/asteroid.png';
+        createElement.className = 'asteroides';
+        createElement.style.top = -76 + 'px';
+        createElement.style.left = Math.random() * innerWidth + 'px'
+        section.appendChild(createElement);
+        asteroidTopPosition = -76;
+        asteroid = createElement;
+    }
 }
 
 function playerShooting(){
@@ -50,19 +54,51 @@ function playerShooting(){
 }
 
 function playerMoving(direction){
-    playerPosition = 0;
 
-    if(direction==='right'){
+    if(direction==='right' && (playerPosition < 950 || playerPosition === undefined)){
         spaceship.style.left = (spaceship.offsetLeft + 20 ) + 'px';
         playerPosition = spaceship.offsetLeft;
-    }else if(direction==='left'){
+    }else if(direction==='left' && (playerPosition > 5 || playerPosition === undefined)){
         spaceship.style.left = (spaceship.offsetLeft - 20 ) + 'px';
         playerPosition = spaceship.offsetLeft;
     }
 }
 
-const generateShoot = setInterval(playerShooting, 500);
+function asteroidFall(){
+        if(asteroid != undefined){
+            if(asteroidTopPosition < 500){
+                asteroid.style.top = asteroidTopPosition + 'px';
+                console.log(asteroidTopPosition);
+            }else{
+                asteroidTopPosition = 0;
+                removeAsteroid();
+            }
+        }
+        asteroidTopPosition += 20;
+}
 
-const generateAsteroidsIcons = setInterval(generateAsteroids, 1000);
+function removeAsteroid(){
+    asteroid.remove();
+    asteroid=undefined;
+}
 
-const loop = setInterval(asteroidTracking, 500);
+function looseCheck(){
+    if(playerPosition!=undefined && asteroid!=undefined){
+        if(playerPosition===asteroid.offsetLeft || (playerPosition>asteroid.offsetLeft && playerPosition < (asteroid.offsetLeft+79))){
+            if(asteroidTopPosition<500 && asteroidTopPosition > 400){
+                alert("looser");
+                removeAsteroid();
+                playerPosition=undefined;
+                asteroidPosition=0;
+            }
+        }
+    }
+}
+
+const looser = setInterval(looseCheck, 100);
+
+const asteroidAnimation = setInterval(asteroidFall, 100);
+
+const generateShoot = setInterval(playerShooting, 1000);
+
+const generateAsteroidsIcons = setInterval(generateAsteroids, 3000);

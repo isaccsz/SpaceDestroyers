@@ -30,7 +30,7 @@ body{
 .gameboard{
     margin: 0 auto;
     width: 1000px;
-    height: 80%;
+    height: 500px;
     border: 1px solid black;
     position: relative;
 }
@@ -62,7 +62,6 @@ body{
     position: absolute;
     top: -76;
     background-image: url(../Img/asteroid.png);
-    animation: asteroidAnimation 2s infinite linear;
 }
 
 #instruction{
