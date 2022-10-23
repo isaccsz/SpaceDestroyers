@@ -42,13 +42,7 @@ body{
     left: 45%;
 }
 
-#asteroide{
-    width: 100px;
-    position: absolute;
-    top: -76px;
-    left: 50%;
-    animation: asteroidAnimation 3s infinite linear;
-}
+
 
 .missile{
     width: 40px;
@@ -60,7 +54,7 @@ body{
 
 .asteroides{
     position: absolute;
-    top: -76;
+    top: -76px;
     background-image: url(../Img/asteroid.png);
 }
 
@@ -82,11 +76,12 @@ body{
     color: rgba(255, 255, 255, .3);
 }
 
-@keyframes asteroidAnimation {
-    from{
-        top:-75;
-    }
+.explosao{
+    position: absolute;
+    
+}
 
+@keyframes explosion {
     to{
         top: 100%;
     }
