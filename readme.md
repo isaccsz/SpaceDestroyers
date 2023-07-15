@@ -1,6 +1,6 @@
 # Space destroyers
 
-##Tecnologias utilizadas: JavaScript, HTML e CSS.
+## Tecnologias utilizadas: JavaScript, HTML e CSS.
 
 Olá,
 
